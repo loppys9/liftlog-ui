@@ -17,4 +17,8 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+app.import('bower_components/html5-boilerplate/dist/css/normalize.css');
+app.import('bower_components/html5-boilerplate/dist/css/main.css');
+app.import('bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js');
+app.import('bower_components/html5-boilerplate/dist/js/plugins.js');
 module.exports = app.toTree();

@@ -9,17 +9,34 @@
 
     {{content-for 'head'}}
 
-    <link rel="stylesheet" href="assets/vendor.css">
-    <link rel="stylesheet" href="assets/liftlog-ui.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}/assets/vendor.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}assets/liftlog-ui.css">
+
 
     {{content-for 'head-footer'}}
   </head>
   <body>
+  {% verbatim %}
     {{content-for 'body'}}
+  {% endverbatim %}
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-    <script src="assets/vendor.js"></script>
-    <script src="assets/liftlog-ui.js"></script>
+    <!-- Add your site or application content here -->
 
+    <script src="{{STATIC_URL}}assets/vendor.js"></script>
+    <script src="{{STATIC_URL}}assets/liftlog-ui.js"></script>
+    <script type="text/javascript">
+      jQuery(document).ajaxSend(function(event, xhr, settings) {
+        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+          xhr.setRequestHeader("X-CSRFToken", "{{csrf_token}}");
+        }
+      });
+    </script>
+
+  {% verbatim %}
     {{content-for 'body-footer'}}
+  {% endverbatim %}
   </body>
 </html>
