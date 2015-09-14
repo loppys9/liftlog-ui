@@ -7,6 +7,7 @@ var Router = Ember.Router.extend({
 
 export default Router.map(function() {
   this.resource('newworkout', { path: '/' });
+  this.route('newworkout');
   this.route('workout');
   this.route('login');
 });

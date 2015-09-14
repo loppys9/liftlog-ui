@@ -1,4 +1,5 @@
 <form {{action 'authenticate' on='submit'}}>
+  {{input id='csrfmiddlewaretoken' type='hidden' value=csrf_token}}
   <label for="identification">Login</label>
   {{input id='identification' placeholder='Enter Login' value=identification}}
   <label for="password">Password</label>

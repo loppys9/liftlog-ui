@@ -16,5 +16,8 @@
   },
   "resolutions": {
     "ember-load-initializers": "~0.1.5"
+  },
+  "devDependencies": {
+    "typeahead.js": "~0.11.1"
   }
 }

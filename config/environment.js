@@ -17,9 +17,6 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-    django: {
-        csrf: '^api'
-    }
   };
 
   if (environment === 'development') {
@@ -31,9 +28,11 @@ module.exports = function(environment) {
     ENV.APP.API_HOST = 'http://127.0.0.1:8000';
     ENV.APP.BLAH_BLAH = 'testing, 1, 2, 3';
     ENV['simple-auth'] = {
-      authorizer: 'authorizer:django-rest',
-      serverTokenEndpoint: ENV.APP.API_HOST + '/auth/',
-      crossOriginWhitelist: [ENV.APP.API_HOST]
+      authorizer: 'simple-auth-authorizer:django-rest',
+      //serverTokenEndpoint: ENV.APP.API_HOST + '/auth/',
+      crossOriginWhitelist: [ENV.APP.API_HOST],
+      //store: 'simple-auth-session-store:local-storage',
+      store: 'simple-auth-session-store:ephemeral',
     };
   }
 
