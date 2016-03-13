@@ -3,6 +3,7 @@
 {{input type="date" value=date}}
 {{input type="text" placeholder="description" value=descr}}
 </div>
-{{search-box model="excercise" value=ep}}
 <button {{action "addWorkout"}}>Submit</button>
+<br/>
+{{lift-entry store=store newentry='addEntry'}}
 

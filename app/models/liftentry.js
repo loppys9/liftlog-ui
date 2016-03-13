@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-    workout: DS.belongsTo('workout'), 
+    workout: DS.belongsTo('workout', {embedded: 'always'}), 
     excercise: DS.belongsTo('excercise'),
     weight: DS.attr('number'),
     units: DS.attr('string'),

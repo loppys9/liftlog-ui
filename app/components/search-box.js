@@ -7,8 +7,7 @@ export default Ember.TextField.extend({
     minLength: 2,
     href: ENV.APP.API_HOST,
     model: null,
-    //endpoint: '',
-    value: '',
+    endpoint: '',
 
     didInsertElement: function(){
         this._super();
@@ -16,7 +15,6 @@ export default Ember.TextField.extend({
     },
     initTypeahead: function(){
         var _this = this;
-        //console.log(this.model);
         var data = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -36,21 +34,13 @@ export default Ember.TextField.extend({
             },
             {
                 name: 'excercise',
-                //display: 'name',
                 display: function (obj){
                     console.log(obj['name']);
-                    //_this.endpoint = _this.href + "api/excercise/" + obj['id'] + '/';
-                    _this.value = _this.href + "api/excercise/" + obj['id'] + '/';
+                    _this.set("endpoint", _this.href + "api/excercise/" + obj['id'] + '/');
                     console.log(_this.value);
                     return obj['name'];
                 },
                 source: data.ttAdapter(),
-                /*source: function(query, cb){
-                    console.log(query);
-                    data.get(query, function(suggestions) {
-                        cb(suggestions);
-                    });
-                },*/
             });
     },
 });
